@@ -94,8 +94,8 @@ def otsu():
 
 
 # 简单阈值法
-# simple()
+simple()
 # 自适应阈值
 # auto()
 # Otsu 二值化
-otsu()
+# otsu()
