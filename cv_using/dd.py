@@ -2,16 +2,30 @@ import inspect
 
 import cv2
 import cv2 as cv
-import numpy as np
 from cv2.typing import MatLike
 
 
-def cv_show(mat):
-    cv2.namedWindow(winname=mat.__str__(), flags=cv2.WINDOW_NORMAL)
-    cv2.imshow(mat.__str__(), mat)
-    cv2.waitKey(0)
+def get_variable_name(mat):
+    # 获取当前范围内的变量名
+    local_vars = inspect.currentframe().f_back.f_locals.keys()
+    # 返回与参数名匹配的第一个变量名（如果有的话）
+    for var_name in local_vars:
+        if var_name == mat:
+            return var_name
+    return None
 
 
+def cv_show(mat, timeout: int = 0):
+    window_name = get_variable_name(mat)
+    cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
+    cv2.imshow(window_name, mat)
+    if timeout > 0:
+        cv2.waitKey(timeout)
+    else:
+        cv2.waitKey(0)
+
+
+# 开操作
 def step1(img: MatLike) -> MatLike:
     kernel = cv.getStructuringElement(shape=cv.MORPH_RECT, ksize=(7, 3))
     # 开操作，去除竖栅
@@ -20,9 +34,6 @@ def step1(img: MatLike) -> MatLike:
     ret, thresh = cv2.threshold(out, 230, 255, cv2.THRESH_TOZERO_INV)
     ultimate = cv.morphologyEx(src=thresh, op=cv.MORPH_OPEN, kernel=kernel)
     return ultimate
-
-
-# 开操作
 
 
 # 均值滤波
@@ -36,7 +47,7 @@ def step2(img: MatLike) -> MatLike:
     return blur
 
 
-# 动态二值化
+# 差值阈值二值化
 def step3(base: MatLike, blur: MatLike) -> MatLike:
     # 计算图像差值
     diff = cv2.subtract(blur, base)
