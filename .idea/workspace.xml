@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c556f17f-8d22-4111-a663-6032f714e8da" name="更改" comment="更新./idea/">
-      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="c556f17f-8d22-4111-a663-6032f714e8da" name="更改" comment="更新">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cv_using/dd.py" beforeDir="false" afterPath="$PROJECT_DIR$/cv_using/dd.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helloOffice/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/helloOffice/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helloOffice/hello-excel.py" beforeDir="false" afterPath="$PROJECT_DIR$/helloOffice/hello-excel.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +17,6 @@
   </component>
   <component name="GitHubPullRequestSearchHistory"><![CDATA[{
   "lastFilter": {
-    "state": "OPEN",
-    "assignee": "qhdjt"
   }
 }]]></component>
   <component name="GithubPullRequestsUISettings">
@@ -136,7 +128,23 @@
       <option name="project" value="LOCAL" />
       <updated>1703770162462</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="更新">
+      <option name="closed" value="true" />
+      <created>1704942920476</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1704942920476</updated>
+    </task>
+    <task id="LOCAL-00003" summary="更新">
+      <option name="closed" value="true" />
+      <created>1704943219235</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1704943219235</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -165,6 +173,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update .gitignore" />
     <MESSAGE value="更新./idea/" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新./idea/" />
+    <MESSAGE value="更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新" />
   </component>
 </project>
