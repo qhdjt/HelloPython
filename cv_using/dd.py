@@ -1,24 +1,10 @@
-import inspect
-
 import cv2
-import cv2 as cv
 from cv2.typing import MatLike
 
 
-def get_variable_name(mat):
-    # 获取当前范围内的变量名
-    local_vars = inspect.currentframe().f_back.f_locals.keys()
-    # 返回与参数名匹配的第一个变量名（如果有的话）
-    for var_name in local_vars:
-        if var_name == mat:
-            return var_name
-    return None
-
-
-def cv_show(mat, timeout: int = 0):
-    window_name = get_variable_name(mat)
-    cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
-    cv2.imshow(window_name, mat)
+def cv2_show(mat, winname: str = "winname", timeout: int = 0):
+    cv2.namedWindow(winname, cv2.WINDOW_NORMAL)
+    cv2.imshow(winname, mat)
     if timeout > 0:
         cv2.waitKey(timeout)
     else:
@@ -27,12 +13,12 @@ def cv_show(mat, timeout: int = 0):
 
 # 开操作
 def step1(img: MatLike) -> MatLike:
-    kernel = cv.getStructuringElement(shape=cv.MORPH_RECT, ksize=(7, 3))
+    kernel = cv2.getStructuringElement(shape=cv2.MORPH_RECT, ksize=(7, 3))
     # 开操作，去除竖栅
-    out = cv.morphologyEx(src=img, op=cv.MORPH_OPEN, kernel=kernel)
+    out = cv2.morphologyEx(src=img, op=cv2.MORPH_OPEN, kernel=kernel)
     # 应用阈值处理,去除电极
     ret, thresh = cv2.threshold(out, 230, 255, cv2.THRESH_TOZERO_INV)
-    ultimate = cv.morphologyEx(src=thresh, op=cv.MORPH_OPEN, kernel=kernel)
+    ultimate = cv2.morphologyEx(src=thresh, op=cv2.MORPH_OPEN, kernel=kernel)
     return ultimate
 
 
@@ -40,10 +26,10 @@ def step1(img: MatLike) -> MatLike:
 def step2(img: MatLike) -> MatLike:
     # 应用阈值处理
     ret, thresh = cv2.threshold(img, 220, 255, cv2.THRESH_TOZERO_INV)
-    # cv.imshow("step2",thresh)
-    # cv.waitKey(0)
+    # cv2.imshow("step2",thresh)
+    # cv2.waitKey(0)
     t = step1(thresh)
-    blur = cv.blur(t, (23, 29))
+    blur = cv2.blur(t, (23, 29))
     return blur
 
 
@@ -60,10 +46,10 @@ def step3(base: MatLike, blur: MatLike) -> MatLike:
 
 if __name__ == '__main__':
     src = cv2.imread("./dd.BMP", cv2.IMREAD_REDUCED_GRAYSCALE_2)
-    # src = cv.imread("dd.BMP")
+    # src = cv2.imread("dd.BMP")
     s1 = step1(src)
-    cv_show(s1)
+    cv2_show(s1)
     s2 = step2(s1)
-    cv_show(s2)
+    cv2_show(s2)
     s3 = step3(s2, s1)
-    cv_show(s3)
+    cv2_show(s3)
