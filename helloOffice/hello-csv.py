@@ -48,5 +48,3 @@ def getAny(fileName="D.csv"):
 
 
 getAny(fileName="D.csv")
-
-
